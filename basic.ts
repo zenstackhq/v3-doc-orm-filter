@@ -31,6 +31,12 @@ async function main() {
     await db.post.findFirst({ where: { viewCount: { gt: 1 }, title: 'Post1' } })
   );
 
+  // use "in"/"notIn" to check if a field matches any item in a list
+  console.log('Post with title in ["Post1, "Post2"]');
+  console.log(
+    await db.post.findFirst({ where: { title: { in: ['Post1', 'Post2' ] } } })
+  );
+
   // use AND/OR/NOT to build composite filters
   console.log('Post with: viewCount > 1 || (content startsWith "Another" && title != "Post1")')
   console.log(
