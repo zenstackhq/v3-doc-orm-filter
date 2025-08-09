@@ -23,6 +23,10 @@ async function main() {
   console.log('Post with not(viewCount > 1)');
   console.log(await db.post.findFirst({ where: { viewCount: { not: { gt: 1 } } } }));
 
+  // multile fields in a filter object has AND semantic
+  console.log('Post with viewCount > 1 && title = "Post1"')
+  console.log(await db.post.findFirst({ where: { viewCount: { gt: 1 }, title: 'Post1' } }));
+
   // use AND/OR/NOT to build composite filters
   console.log('Post with: viewCount > 1 || (content startsWith "Another" && title != "Post1")')
   console.log(
