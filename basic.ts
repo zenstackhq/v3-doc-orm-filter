@@ -26,7 +26,9 @@ async function main() {
   // use "not" to negate a filter
   console.log('Post with not(viewCount > 1)');
   console.log(
-    await db.post.findFirst({ where: { viewCount: { not: { gt: 1 } } } })
+    await db.post.findFirst({ 
+      where: { viewCount: { not: { gt: 1 } } } 
+    })
   );
 
   // multile fields in a filter object has AND semantic
