@@ -11,8 +11,8 @@ async function main() {
     where: { author: { email: 'u1@test.com' } }
   }));
 
-  // for optional relation, you can use null check to filter
-  // on if the relation is connected
+  // for optional relation, you can use null check to filter on if the relation 
+  // is connected
   console.log('Post not owned by anyone');
   console.log(await db.post.findFirst({
     where: { author: null }
