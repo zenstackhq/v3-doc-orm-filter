@@ -50,25 +50,14 @@ export const schema = {
                     attributes: [{ name: "@id" }, { name: "@default", args: [{ name: "value", value: ExpressionUtils.call("autoincrement") }] }],
                     default: ExpressionUtils.call("autoincrement")
                 },
-                createdAt: {
-                    name: "createdAt",
-                    type: "DateTime",
-                    attributes: [{ name: "@default", args: [{ name: "value", value: ExpressionUtils.call("now") }] }],
-                    default: ExpressionUtils.call("now")
-                },
-                updatedAt: {
-                    name: "updatedAt",
-                    type: "DateTime",
-                    updatedAt: true,
-                    attributes: [{ name: "@updatedAt" }]
-                },
                 title: {
                     name: "title",
                     type: "String"
                 },
                 content: {
                     name: "content",
-                    type: "String"
+                    type: "String",
+                    optional: true
                 },
                 published: {
                     name: "published",
@@ -76,15 +65,23 @@ export const schema = {
                     attributes: [{ name: "@default", args: [{ name: "value", value: ExpressionUtils.literal(false) }] }],
                     default: false
                 },
+                viewCount: {
+                    name: "viewCount",
+                    type: "Int",
+                    attributes: [{ name: "@default", args: [{ name: "value", value: ExpressionUtils.literal(0) }] }],
+                    default: 0
+                },
                 author: {
                     name: "author",
                     type: "User",
+                    optional: true,
                     attributes: [{ name: "@relation", args: [{ name: "fields", value: ExpressionUtils.array([ExpressionUtils.field("authorId")]) }, { name: "references", value: ExpressionUtils.array([ExpressionUtils.field("id")]) }] }],
                     relation: { opposite: "posts", fields: ["authorId"], references: ["id"] }
                 },
                 authorId: {
                     name: "authorId",
                     type: "Int",
+                    optional: true,
                     foreignKeyFor: [
                         "author"
                     ]
