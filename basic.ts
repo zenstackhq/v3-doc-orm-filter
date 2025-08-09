@@ -5,9 +5,11 @@ async function main() {
   const db = await createClient();
   await createUsersAndPosts(db);
 
-  // equality/inequality filters
+  // value filters
   console.log('Post title is "Post1"');
   console.log(await db.post.findFirst({ where: { title: 'Post1' } }));
+  
+  // equality filters (equivalent to a value filter)
   console.log('Post title equals "Post1"');
   console.log(await db.post.findFirst({ where: { title: { equals: 'Post1' } } }));
 
@@ -23,7 +25,9 @@ async function main() {
 
   // use "not" to negate a filter
   console.log('Post with not(viewCount > 1)');
-  console.log(await db.post.findFirst({ where: { viewCount: { not: { gt: 1 } } } }));
+  console.log(
+    await db.post.findFirst({ where: { viewCount: { not: { gt: 1 } } } })
+  );
 
   // multile fields in a filter object has AND semantic
   console.log('Post with viewCount > 1 && title = "Post1"')
