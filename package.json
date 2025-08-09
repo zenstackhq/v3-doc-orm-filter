@@ -4,7 +4,8 @@
   "scripts": {
     "generate": "zen generate",
     "dev": "tsx basic.ts",
-    "basic": "tsx basic.ts"
+    "basic": "tsx basic.ts",
+    "relation": "tsx relation.ts"
   },
   "devDependencies": {
     "@types/node": "^24.1.0",
