@@ -13,7 +13,9 @@ async function main() {
 
   // string operators
   console.log('Post content starts with "Another"');
-  console.log(await db.post.findFirst({ where: { content: { startsWith: 'Another' }}}));
+  console.log(
+    await db.post.findFirst({ where: { content: { startsWith: 'Another' }}})
+  );
 
   // numeric operators
   console.log('Post with viewCount > 1');
@@ -25,7 +27,9 @@ async function main() {
 
   // multile fields in a filter object has AND semantic
   console.log('Post with viewCount > 1 && title = "Post1"')
-  console.log(await db.post.findFirst({ where: { viewCount: { gt: 1 }, title: 'Post1' } }));
+  console.log(
+    await db.post.findFirst({ where: { viewCount: { gt: 1 }, title: 'Post1' } })
+  );
 
   // use AND/OR/NOT to build composite filters
   console.log('Post with: viewCount > 1 || (content startsWith "Another" && title != "Post1")')
