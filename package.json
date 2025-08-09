@@ -5,7 +5,8 @@
     "generate": "zen generate",
     "dev": "tsx basic.ts",
     "basic": "tsx basic.ts",
-    "relation": "tsx relation.ts"
+    "relation": "tsx relation.ts",
+    "query-builder": "tsx query-builder.ts"
   },
   "devDependencies": {
     "@types/node": "^24.1.0",
