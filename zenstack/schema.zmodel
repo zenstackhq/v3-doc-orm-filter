@@ -16,6 +16,7 @@ model Post {
     id        Int      @id @default(autoincrement())
     title     String
     content   String?
+    slug      String?  @unique
     published Boolean  @default(false)
     viewCount Int      @default(0)
     author    User?    @relation(fields: [authorId], references: [id])
